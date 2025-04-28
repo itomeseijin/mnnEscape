@@ -55,6 +55,12 @@
             var tape = new Image();
             var key = new Image();
 
+            /調査完了用
+            var chest = new Image();
+            var dust = new Image();
+            var sink = new Image();
+            var strage = new Image();
+
             /*
             bg.src = '{{ url_for("static", filename="imgs/bg.PNG")}}';
             bg2.src = '{{ url_for("static", filename="imgs/bg2.PNG")}}';
@@ -97,7 +103,11 @@
             battery.src = 'imgs/battery.PNG';
             tape.src = 'imgs/tape.PNG';
             key.src = 'imgs/key.PNG';
-            
+
+            chest.src = 'imgs/chest.PNG';
+            dust.src = 'imgs/dust.PNG';
+            sink.src = 'imgs/sink.PNG';
+            strage.src = 'imgs/strage.PNG';
 
             //var mnnPos = {x:428, y:348-mnn.height};
             var mnnPos = {x:400, y:200};
@@ -632,6 +642,23 @@
             function draw(){
                 ctx.drawImage(bg,0,0);
                 ctx.drawImage(bg2,0,0);
+
+                //調査済みの場所の上書き
+                if (itemFlg[0] == 1){
+                    // sink searched
+                    ctx.drawImage(sink,sinkPos.x,sinkPos.y);
+                }
+                if (itemFlg[1] == 1){
+                    // dust searched
+                    ctx.drawImage(dust,dustPos.x,dustPos.y);
+                }
+                if (itemFlg[4] == 1){
+                    // desk searched
+                    ctx.drawImage(chest,chestPos.x,chestPos.y);
+                }if (itemFlg[7] == 1){
+                    // strage searched
+                    ctx.drawImage(strage,stragePos.x,stragePos.y);
+                }
 
                 // MNNより奥の描画
                 for(var i=0; i < ssvs.length; i++){
